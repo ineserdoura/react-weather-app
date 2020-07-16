@@ -1,13 +1,18 @@
-.Weather{
-    color:#fff;
-    width: fit-content;
+.Weather {
+  color: #fff;
+  width: fit-content;
   height: fit-content;
   max-width: 100%;
   background-color: #282c34;
-  text-align: center;
   margin: 0 auto;
   margin-top: 50px;
   padding: 30px 30px;
   border-radius: 10px;
   box-shadow: 2px 2px 2px rgb(185, 184, 184);
+  text-align: center;
+  align-content: center;
+}
+
+ul {
+  list-style: none;
 }
