@@ -1,13 +1,15 @@
 import React from "react";
 import logo from "./logo.svg";
+import Weather from "./Weather";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <div className="container-fluid">
+        <Weather />
         <footer className="App-footer">
-          <p>
+          <small>
             This page was coded by{" "}
             <a
               href="https://www.linkedin.com/in/in%C3%AAs-serdoura/"
@@ -24,9 +26,9 @@ function App() {
             >
               open-sourced on GitHub
             </a>{" "}
-          </p>
-
-          <p>Built with</p>
+          </small>
+<br/>
+          <small>Built with</small>
           <img src={logo} className="App-logo" alt="logo" />
         </footer>
       </div>
