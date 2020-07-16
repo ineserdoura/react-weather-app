@@ -8,26 +8,30 @@ function App() {
     <div className="App">
       <div className="container-fluid">
         <Weather />
-        <footer className="App-footer">
+        <footer>
           <small>
             This page was coded by{" "}
-            <a
-              href="https://www.linkedin.com/in/in%C3%AAs-serdoura/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Inês Serdoura
-            </a>{" "}
+            <strong>
+              <a
+                href="https://www.linkedin.com/in/in%C3%AAs-serdoura/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Inês Serdoura
+              </a>
+            </strong>{" "}
             and it's{" "}
-            <a
-              href="https://github.com/ineserdoura/weather-react-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              open-sourced on GitHub
-            </a>{" "}
+            <strong>
+              <a
+                href="https://github.com/ineserdoura/weather-react-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                open-sourced on GitHub
+              </a>
+            </strong>{" "}
           </small>
-<br/>
+          <br />
           <small>Built with</small>
           <img src={logo} className="App-logo" alt="logo" />
         </footer>
