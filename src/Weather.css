@@ -10,25 +10,20 @@
   border-radius: 10px;
   box-shadow: 2px 2px 2px rgb(185, 184, 184);
   text-align: center;
-  align-content: center;
 }
-
 .Weather .search-engine {
-  padding-top: 20px;
+  padding: 20px;
 }
 
 .Weather .form-control {
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 2px 2px 2px rgb(185, 184, 184);
 }
 
 .Weather .btn {
-  position: relative;
-  right: -20px;
-  font-size: 20px;
   text-align: center;
   box-shadow: 2px 2px 2px rgb(158, 157, 157);
-  border-radius: 50%;
+  color: #fff;
   transition: all 0.5s ease-in-out;
 }
 .Weather .btn:hover {
