@@ -12,8 +12,8 @@ export default function Weather(props) {
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       icon: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
-      min: response.data.main.temp_max,
-      max: response.data.main.temp_min,
+      min: response.data.main.temp_min,
+      max: response.data.main.temp_max,
       feelsLike: response.data.main.feels_like,
       wind: response.data.wind.speed * 3.6,
       humidity: response.data.main.humidity,
@@ -23,14 +23,8 @@ export default function Weather(props) {
 
   if (weather.loaded) {
     return (
-      <div className="Weather">
-        <div className="row">
-          <div className="col-sm-12">
-            <strong>
-              Thursday, July 16th 2020 <br /> <small>Last update: 12:35</small>
-            </strong>
-          </div>
-        </div>
+      <div className="weather">
+        <div className="row"></div>
         <div className="row search-engine">
           <div className="col-sm-6 ">
             <form className=" form-inline" action="form">
@@ -49,9 +43,16 @@ export default function Weather(props) {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-sm-12">
+        <div className="row overview ">
+          <div className="col-sm-6">
             <h1>{weather.city}</h1>
+          </div>
+          <div className="col-sm-6">
+            <strong>
+              <small>
+                Thursday, July 16th 2020 <br /> Last update: 12:35
+              </small>
+            </strong>
           </div>
         </div>
         <div className="row">
