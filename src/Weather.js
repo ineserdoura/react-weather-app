@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
-import FormattedDate from "./FormattedDate";
+
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [weather, setWeather] = useState({ loaded: false });
+  const [city, setCity] = useState(props.defaultCity);
+
   function showWeather(response) {
-    console.log(response.data);
     setWeather({
       loaded: true,
       city: response.data.name,
@@ -23,96 +25,68 @@ export default function Weather(props) {
     });
   }
 
+  function search() {
+    const apiKey = "9261c308257e6cb61b3c077acec2b0f7";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function showPosition(position) {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    const apiKey = "9261c308257e6cb61b3c077acec2b0f7";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  function getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+
   if (weather.loaded) {
     return (
       <div className="weather">
-        <div className="row"></div>
         <div className="row search-engine">
           <div className="col-sm-6 ">
-            <form className=" form-inline" action="form">
+            <form
+              className=" form-inline"
+              action="form"
+              onSubmit={handleSubmit}
+            >
               <input
                 className="form-control"
                 type="text"
                 placeholder="Search City..."
                 autoComplete="off"
                 autoFocus="on"
+                onChange={handleCityChange}
               />
             </form>
           </div>
           <div className="col-sm-6 ">
             <input className="btn" type="submit" value="Search" />
-            <input className="btn" type="submit" value="Current" />
+            <input
+              className="btn"
+              type="submit"
+              value="Current"
+              onClick={getCurrentPosition}
+            />
           </div>
         </div>
-
-        <div className="row overview ">
-          <div className="col-sm-6">
-            <h1>{weather.city}</h1>
-          </div>
-          <div className="col-sm-6">
-            <strong>
-              <small>
-                <FormattedDate date={weather.date} />
-              </small>
-            </strong>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6">
-            <ul>
-              <li>
-                {" "}
-                <img src={weather.icon} alt={weather.description} />{" "}
-                <h2 className="temperature">
-                  {Math.round(weather.temperature)}°
-                </h2>
-                <span>
-                  <a className="active" href="/">
-                    C
-                  </a>{" "}
-                  <a href="/">F</a>
-                </span>
-              </li>
-              <li>
-                <h4>
-                  <strong className="text-capitalize">
-                    {weather.description}
-                  </strong>
-                </h4>
-              </li>
-              <li>
-                <strong>{Math.round(weather.max)}°</strong>{" "}
-                {Math.round(weather.min)}°
-              </li>
-            </ul>
-          </div>
-          <div className="col-sm-6">
-            <ul>
-              <li>
-                Feels like {""}
-                <strong>{Math.round(weather.feelsLike)}°</strong>
-              </li>
-              <li>
-                Wind {""}
-                <strong>{Math.round(weather.wind)} km/h</strong>
-              </li>
-              <li>
-                Humidity {""}
-                <strong>{Math.round(weather.humidity)} %</strong>
-              </li>
-              <li>
-                Clouds {""}
-                <strong>{weather.clouds} %</strong>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo info={weather} />
       </div>
     );
   } else {
-    const apiKey = "9261c308257e6cb61b3c077acec2b0f7";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Porto&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showWeather);
+    search();
     return <h1>Loading weather...</h1>;
   }
 }
