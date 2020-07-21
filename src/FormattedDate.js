@@ -42,9 +42,9 @@ export default function FormattedDate(props) {
     hours = `0${hours}`;
   }
   return (
-    <div>
+    <span>
       {weekDay}, {month} {getOrdinal(day)} {year} <br /> Last update: {hours}:
       {minutes}
-    </div>
+    </span>
   );
 }

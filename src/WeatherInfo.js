@@ -1,14 +1,15 @@
 import React from "react";
+
 import FormattedDate from "./FormattedDate";
 
 export default function WeatherInfo(props) {
   return (
     <div className="weatherInfo">
       <div className="row overview ">
-        <div className="col-sm-6">
+        <div className="col-sm-6 d-flex justify-content-center ">
           <h1>{props.info.city}</h1>
         </div>
-        <div className="col-sm-6">
+        <div className="col-sm-6 d-flex justify-content-center ">
           <strong>
             <small>
               <FormattedDate date={props.info.date} />
@@ -17,7 +18,7 @@ export default function WeatherInfo(props) {
         </div>
       </div>
       <div className="row">
-        <div className="col-sm-6">
+        <div className="col-sm-6 d-flex justify-content-center ">
           <ul>
             <li>
               {" "}
@@ -45,8 +46,8 @@ export default function WeatherInfo(props) {
             </li>
           </ul>
         </div>
-        <div className="col-sm-6">
-          <ul>
+        <div className="col-sm-6 d-flex justify-content-center ">
+          <ul className="extraData">
             <li>
               Feels like {""}
               <strong>{Math.round(props.info.feelsLike)}°</strong>

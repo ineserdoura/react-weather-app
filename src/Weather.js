@@ -15,7 +15,7 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
-      icon: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       min: response.data.main.temp_min,
       max: response.data.main.temp_max,
       feelsLike: response.data.main.feels_like,
@@ -56,7 +56,7 @@ export default function Weather(props) {
     return (
       <div className="weather">
         <div className="row search-engine">
-          <div className="col-sm-6 ">
+          <div className="col-sm-6 d-flex justify-content-center ">
             <form
               className=" form-inline"
               action="form"
@@ -72,7 +72,7 @@ export default function Weather(props) {
               />
             </form>
           </div>
-          <div className="col-sm-6 ">
+          <div className="col-sm-6 d-flex justify-content-center ">
             <input className="btn" type="submit" value="Search" />
             <input
               className="btn"

@@ -30,7 +30,7 @@
   background-color: #fff;
 }
 .weather .overview {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .weather h1 {
@@ -80,4 +80,8 @@
   margin: 0;
   font-size: 16px;
   list-style: none;
+}
+
+.weather .extraData {
+  padding-top: 20px;
 }
