@@ -15,7 +15,7 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       min: response.data.main.temp_min,
       max: response.data.main.temp_max,
       feelsLike: response.data.main.feels_like,
@@ -77,7 +77,7 @@ export default function Weather(props) {
             <input
               className="btn"
               type="submit"
-              value="Current"
+              value="Locate"
               onClick={getCurrentPosition}
             />
           </div>

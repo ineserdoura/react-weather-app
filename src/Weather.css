@@ -42,16 +42,11 @@
   text-transform: capitalize;
 }
 
-.weather img {
-  width: 70px;
-  height: 70px;
-}
 .weather a,
 .temperature {
   display: inline;
   position: relative;
-  bottom: -5px;
-  line-height: 64px;
+  top: -15px;
 }
 
 .weather a {
