@@ -28,17 +28,16 @@ export default function WeatherInfo(props) {
                 celsius={Math.round(props.info.temperature)}
               />
             </li>
-
-            <li>
-              <strong>{Math.round(props.info.max)}°</strong>{" "}
-              {Math.round(props.info.min)}°
-            </li>
             <li>
               <h4>
                 <strong className="text-capitalize">
                   {props.info.description}
                 </strong>
               </h4>
+            </li>
+            <li>
+              <strong>{Math.round(props.info.max)}°</strong>{" "}
+              {Math.round(props.info.min)}°
             </li>
           </ul>
         </div>

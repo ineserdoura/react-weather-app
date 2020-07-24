@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import Loader from "react-loader-spinner";
-
+import WeatherForecast from "./WeatherForecast";
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
@@ -78,12 +78,13 @@ export default function Weather(props) {
             <input
               className="btn"
               type="submit"
-              value="Locate"
+              value="Current"
               onClick={getCurrentPosition}
             />
           </div>
         </div>
         <WeatherInfo info={weather} />
+        <WeatherForecast city={weather.city} />
       </div>
     );
   } else {
