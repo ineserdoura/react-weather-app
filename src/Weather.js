@@ -12,6 +12,7 @@ export default function Weather(props) {
   function showWeather(response) {
     setWeather({
       loaded: true,
+      unit: "metric",
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -98,7 +99,9 @@ export default function Weather(props) {
           width={100}
           timeout={10000}
         />
-        <h1>Loading weather...</h1>
+        <h1>
+          Loading weather, <em>please wait...</em>
+        </h1>
       </div>
     );
   }

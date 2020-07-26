@@ -41,8 +41,23 @@ export default function FormattedDate(props) {
   if (hours < 10) {
     hours = `0${hours}`;
   }
+
+  function greetUser() {
+    let hours = props.date.getHours();
+    if (hours >= 6 && hours < 12) {
+      return `Good morning`;
+    }
+    if (hours >= 12 && hours < 20) {
+      return `Good afternoon`;
+    } else {
+      return `Good night`;
+    }
+  }
+
+  console.log(greetUser());
   return (
     <span>
+      {greetUser()} <br />
       {weekDay}, {month} {getOrdinal(day)} {year} <br /> Last update: {hours}:
       {minutes}
     </span>

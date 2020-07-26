@@ -47,6 +47,9 @@
   display: inline;
 }
 
+.weather .active {
+  font-size: 32px;
+}
 .weather a {
   color: #5b6375;
   text-decoration: none;
@@ -70,4 +73,14 @@
 
 .loading {
   text-align: center;
+}
+
+.weather .WeatherForecastPreview {
+  margin: 20px auto;
+}
+.weather .WeatherForecastPreview canvas {
+  display: block;
+  margin: 5px auto;
+  width: 50px;
+  height: 50px;
 }
