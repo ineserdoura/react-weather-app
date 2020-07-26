@@ -4,15 +4,38 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import WeatherForecast from "./WeatherForecast";
 import WeatherInfo from "./WeatherInfo";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weather, setWeather] = useState({ loaded: false });
   const [city, setCity] = useState(props.defaultCity);
+  const [unit, setUnit] = useState("celsius");
+  const [celsiusSelected, setCelsiusSelected] = useState({});
+  const [fahrenheitSelected, setFahrenheitSelected] = useState({});
+
+  function getFahrenheit(event) {
+    event.preventDefault();
+    setUnit("fahrenheit");
+    setFahrenheitSelected({
+      color: `#282c34`,
+      backgroundColor: `#fff`,
+    });
+    setCelsiusSelected({});
+  }
+
+  function getCelsius(event) {
+    event.preventDefault();
+    setUnit("celsius");
+    setCelsiusSelected({
+      color: `#282c34`,
+      backgroundColor: `#fff`,
+    });
+    setFahrenheitSelected({});
+  }
 
   function showWeather(response) {
     setWeather({
       loaded: true,
-      unit: "metric",
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -57,13 +80,33 @@ export default function Weather(props) {
   if (weather.loaded) {
     return (
       <div className="weather">
-        <div className="row search-engine">
-          <div className="col-sm-6 d-flex justify-content-center ">
-            <form
-              className=" form-inline"
-              action="form"
-              onSubmit={handleSubmit}
+        <div className="row">
+          <div className="col-sm-9 d-flex justify-content-center ">
+            <strong>
+              {" "}
+              <FormattedDate date={weather.date} />
+            </strong>
+          </div>
+          <div className="col-sm-3 d-flex justify-content-center ">
+            <button
+              className="btn units"
+              onClick={getCelsius}
+              style={celsiusSelected}
             >
+              C
+            </button>
+            <button
+              className="btn units"
+              onClick={getFahrenheit}
+              style={fahrenheitSelected}
+            >
+              F
+            </button>
+          </div>
+        </div>
+        <div className="row search-engine">
+          <div className="col-sm-12 d-flex justify-content-center ">
+            <form action="form" onSubmit={handleSubmit}>
               <input
                 className="form-control"
                 type="text"
@@ -72,20 +115,18 @@ export default function Weather(props) {
                 autoFocus="on"
                 onChange={handleCityChange}
               />
+              <input className="btn" type="submit" value="Search" />
+              <input
+                className="btn"
+                type="submit"
+                value="Current"
+                onClick={getCurrentPosition}
+              />
             </form>
           </div>
-          <div className="col-sm-6 d-flex justify-content-center ">
-            <input className="btn" type="submit" value="Search" />
-            <input
-              className="btn"
-              type="submit"
-              value="Current"
-              onClick={getCurrentPosition}
-            />
-          </div>
         </div>
-        <WeatherInfo info={weather} />
-        <WeatherForecast city={weather.city} />
+        <WeatherInfo info={weather} unit={unit} />
+        <WeatherForecast city={weather.city} unit={unit} />
       </div>
     );
   } else {

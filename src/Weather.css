@@ -2,7 +2,7 @@
   color: #fff;
   width: fit-content;
   height: fit-content;
-  max-width: 600px;
+  max-width: 100%;
   background-color: #282c34;
   margin: 0 auto;
   margin-top: 50px;
@@ -10,6 +10,11 @@
   border-radius: 10px;
   box-shadow: 2px 2px 2px rgb(185, 184, 184);
   text-align: center;
+}
+
+.weather .units {
+  border-radius: 50%;
+  font-weight: bold;
 }
 .weather .search-engine {
   padding-top: 20px;
@@ -24,13 +29,20 @@
   text-align: center;
   box-shadow: 2px 2px 2px rgb(158, 157, 157);
   color: #fff;
+  opacity: 0.6;
   transition: all 0.5s ease-in-out;
 }
 .weather .btn:hover {
-  background-color: #fff;
+  opacity: 1;
+  color: #fff;
 }
+
 .weather .overview {
   padding-top: 20px;
+}
+
+.weather .currentTemperature {
+  margin-top: 20px;
 }
 
 .weather h1 {
@@ -42,22 +54,10 @@
   text-transform: capitalize;
 }
 
-.weather a,
-.temperature {
+.weather .temperature {
   display: inline;
-}
-
-.weather .active {
   font-size: 32px;
-}
-.weather a {
-  color: #5b6375;
-  text-decoration: none;
-  transition: all 500ms ease-in-out;
-}
-.weather a:hover {
-  text-decoration: none;
-  color: #fff;
+  font-weight: bold;
 }
 
 .weather ul {
