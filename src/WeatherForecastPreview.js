@@ -20,7 +20,7 @@ export default function WeatherForecastPreview(props) {
 
         <WeatherIcon code={props.data.weather[0].icon} />
         <small>
-          <strong>{temperature()}°</strong>
+          <strong>{temperature()}°C</strong>
         </small>
       </div>
     );
@@ -31,7 +31,7 @@ export default function WeatherForecastPreview(props) {
 
         <WeatherIcon code={props.data.weather[0].icon} />
         <small>
-          <strong>{Math.round((temperature() * 9) / 5 + 32)}°</strong>
+          <strong>{Math.round((temperature() * 9) / 5 + 32)}°F</strong>
         </small>
       </div>
     );

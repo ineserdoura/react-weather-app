@@ -37,7 +37,7 @@ export default function WeatherInfo(props) {
             <ul className="extraData">
               <li>
                 Feels like {""}
-                <strong>{Math.round(props.info.feelsLike)}°</strong>
+                <strong>{Math.round(props.info.feelsLike)}°C</strong>
               </li>
               <li>
                 Wind {""}
@@ -92,7 +92,7 @@ export default function WeatherInfo(props) {
               <li>
                 Feels like {""}
                 <strong>
-                  {Math.round((props.info.feelsLike * 9) / 5 + 32)}°
+                  {Math.round((props.info.feelsLike * 9) / 5 + 32)}°F
                 </strong>
               </li>
               <li>
