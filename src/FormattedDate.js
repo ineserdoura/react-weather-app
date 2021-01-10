@@ -34,19 +34,11 @@ export default function FormattedDate(props) {
       return n + (s[(v - 20) % 10] || s[v] || s[0]);
     };
     let year = props.date.getFullYear();
-    let hours = props.date.getHours();
-    let minutes = props.date.getMinutes();
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-    if (hours < 10) {
-      hours = `0${hours}`;
-    }
 
-    return `${weekDay}, ${month} ${getOrdinal(
-      day
-    )} ${year} ${hours}:${minutes}`;
+    return `${weekDay}, ${month} ${getOrdinal(day)} ${year}`;
   }
+
+  
   function greetUser() {
     let hours = props.date.getHours();
     if (hours >= 6 && hours < 12) {
@@ -59,16 +51,10 @@ export default function FormattedDate(props) {
     }
   }
 
-  let ReactRotatingText = require("react-rotating-text");
-
   return (
     <span className="formattedDate">
-      <ReactRotatingText
-        items={[greetUser(), date()]}
-        typingInterval={100}
-        pause={2000}
-        deletingInterval={100}
-      />
+      {greetUser()}
+      <br></br> {date()}
     </span>
   );
 }
